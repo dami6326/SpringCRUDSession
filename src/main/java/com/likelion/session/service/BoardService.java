@@ -12,13 +12,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Slf4j
-@Service
-@RequiredArgsConstructor
-@Transactional
+@Slf4j //로그 출력을 위한 log 객체를 자동으로 생성해주는 어노테이션
+@Service //이 클래스가 비즈니스 로직을 처리하는 클래스임을 스프링에게 알려줌.
+@RequiredArgsConstructor //final이 붙은 필드(boardRepository)를 생성자로 자동 주입해줌
+@Transactional //DB 작업 도중 에러가 나면 모든 작업을 이전으로 롤백함
+
 public class BoardService {
 
-    private final ;
+    private final BoardRepository boardRepository;
 
     /*
         게시글 생성

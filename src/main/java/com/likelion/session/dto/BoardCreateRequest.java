@@ -5,13 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter //필드 값을 읽는 getter 메서드를 자동으로 생성해줌
+@Setter //setter 메서드를 자동 생성해줌
+@NoArgsConstructor //매개변수가 없는 기본 생성자를 자동으로 만들어 줌
+@AllArgsConstructor //모든 필드를 매개변수로 받는 생성자를 자동으로 만들어줌
+
 public class BoardCreateRequest {
-    // 넘겨주고 싶은 정보: 제목(title), 내용(content), 작성자(writer)
-    private String ;
-    private String ;
-    private String ;
+    private String title;
+    private String content;
+    private String writer;
 }
