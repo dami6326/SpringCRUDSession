@@ -13,14 +13,15 @@ import java.time.LocalDateTime;
 @Table(name = "boards") //이 엔티티가 어떤 DB 테이블 이름과 매핑되는지 지정하는 역할. 이 클래스는 DB의 "boards" 테이블과 연결된다.
 @NoArgsConstructor(access = AccessLevel.PROTECTED) //외부에서는 못 쓰고, 내부/상속/JPA만 쓸 수 있는 기본 생성자 생성
 @AllArgsConstructor //모든 필드를 한 번에 초기화하는 생성자 생성
+
 public class Board {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //데이터베이스에서 해당 엔티티의 기본키를 지정하는 어노테이션
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //기본키 값을 DB가 자동으로 증가해서 생성하도록 설정하는 어노테이션
     private Long id;
 
     // 게시글 제목
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100) //엔티티 필드를 데이터베이스 컬럼과 매핑하는 어노테이션
     private String title;
 
     // 게시글 내용
@@ -46,13 +47,13 @@ public class Board {
         this.writer = writer;
     }
 
-    @PrePersist
+    @PrePersist //엔티티가 DB에 저장되기 전에 실행되는 메서드를 지정하는 어노테이션
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
 
-    @PreUpdate
+    @PreUpdate //엔티티가 DB에서 수정되기 전에 실행되는 메서드를 지정하는 어노테이션
     public void preUpdate() {
         this.updatedAt = LocalDateTime.now();
     }
