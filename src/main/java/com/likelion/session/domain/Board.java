@@ -25,19 +25,19 @@ public class Board {
     private String title;
 
     // 게시글 내용
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT") //엔티티 필드를 데이터베이스 컬럼과 매핑하는 어노테이션
     private String content;
 
     // 작성자
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 30) //엔티티 필드를 데이터베이스 컬럼과 매핑하는 어노테이션
     private String writer;
 
     // 생성 시간
-    @Column(nullable = false)
+    @Column(nullable = false) //엔티티 필드를 데이터베이스 컬럼과 매핑하는 어노테이션
     private LocalDateTime createdAt;
 
     // 수정 시간
-    @Column(nullable = false)
+    @Column(nullable = false) //엔티티 필드를 데이터베이스 컬럼과 매핑하는 어노테이션
     private LocalDateTime updatedAt;
 
 

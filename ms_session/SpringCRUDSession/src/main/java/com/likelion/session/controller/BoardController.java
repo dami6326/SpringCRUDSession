@@ -33,44 +33,44 @@ public class BoardController {
         -> 결과 반환
         -> JSON 응답
      */
-    @Operation(
+    @Operation( //API의 기능과 설명을 문서화하기 위한 어노테이션
             summary = "게시글 생성",
             description = "새로운 게시글을 생성합니다."
     )
-    @PostMapping
+    @PostMapping //POST 요청을 처리해 데이터를 생성/전송하는 API 매핑 어노테이션
     public ResponseEntity<BoardResponse> create(@RequestBody BoardCreateRequest request) {
         BoardResponse response = boardService.create(request);
         return ResponseEntity.ok(response);
     }
 
     // 게시글 전체 조회
-    @Operation(
+    @Operation( //API의 기능과 설명을 문서화하기 위한 어노테이션
             summary = "게시글 전체 조회",
             description = "등록된 모든 게시글을 조회합니다."
     )
-    @GetMapping
+    @GetMapping //GET 요청을 처리해 데이터를 조회하는 API 매핑 어노테이션
     public ResponseEntity<List<BoardResponse>> findAll() {
         List<BoardResponse> response = boardService.findAll();
         return ResponseEntity.ok(response);
     }
 
     // 게시글 단건 조회
-    @Operation(
+    @Operation( //API의 기능과 설명을 문서화하기 위한 어노테이션
             summary = "게시글 단건 조회",
             description = "id로 특정 게시글을 조회합니다."
     )
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") //URL의 id 값을 받아 해당 데이터를 조회하는 GET API 매핑
     public ResponseEntity<BoardResponse> findById(@PathVariable Long id) {
         BoardResponse response = boardService.findById(id);
         return ResponseEntity.ok(response);
     }
 
     // 게시글 수정
-    @Operation(
+    @Operation( //API의 기능과 설명을 문서화하기 위한 어노테이션
             summary = "게시글 수정",
             description = "id로 특정 게시글의 제목과 내용을 수정합니다."
     )
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") //URL의 id에 해당하는 데이터를 수정하는 PUT API 매핑
     public ResponseEntity<BoardResponse> update(@PathVariable Long id,
                                                 @RequestBody BoardUpdateRequest request) {
         BoardResponse response = boardService.update(id, request);
@@ -78,11 +78,11 @@ public class BoardController {
     }
 
     // 게시글 삭제
-    @Operation(
+    @Operation( //API의 기능과 설명을 문서화하기 위한 어노테이션
             summary = "게시글 삭제",
             description = "id로 특정 게시글을 삭제합니다."
     )
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") //URL의 id에 해당하는 데이터를 삭제하는 DELETE API 매핑
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         boardService.delete(id);
         return ResponseEntity.noContent().build();

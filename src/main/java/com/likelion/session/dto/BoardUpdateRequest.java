@@ -15,7 +15,7 @@ public class BoardUpdateRequest {
     @Size(max = 100, message = "제목은 100자 이하로 입력해주세요.") //문자열이나 컬렉션의 길이(크기)를 제한하는 검증 어노테이션
     private String title;
 
-    @NotBlank(message = "내용은 필수입니다.")
+    @NotBlank(message = "내용은 필수입니다.") //문자열이 null이 아니고 공백이 아닌 값이어야 함을 검증하는 어노테이션
     private String content;
 }
 

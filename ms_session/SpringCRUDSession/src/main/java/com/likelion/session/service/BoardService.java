@@ -71,7 +71,7 @@ public class BoardService {
         - id로 게시글 조회
         - 없으면 예외 발생
      */
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true) //조회만 한다는 뜻.
     public BoardResponse findById(Long id) {
         Board board = boardRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
